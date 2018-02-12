@@ -36,6 +36,8 @@ This will activate the `cover_image_url` attribute for all articles (including d
 <img src="{{ page.cover_image_url }}" alt="Cover image">
 ```
 
+[![Example image by Ray Hennessy](https://images.unsplash.com/photo-1471644865643-fe726490270a?w=1024)](https://unsplash.com/photos/DAHUS8W4rNE)
+
 ### Using local images
 
 If you want to use local images in addition to full image URLs, you need to define in your **settings file** where those are stored:
