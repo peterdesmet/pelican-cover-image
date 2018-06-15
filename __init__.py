@@ -1,1 +1,1 @@
-from .cover_image_url import *
+from .cover_image import *
