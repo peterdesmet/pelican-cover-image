@@ -1,6 +1,6 @@
 from pelican import signals
 
-def cover_image_url(generator):
+def cover_image(generator):
     """
     Adds cover_image_url attribute for each article/page, based on cover_image in metadata or DEFAULT_COVER_IMAGE
     Works for local images and URLs
@@ -39,5 +39,5 @@ def cover_image_url(generator):
         article_or_page.cover_image_url = cover_image_url
 
 def register():
-    signals.article_generator_finalized.connect(cover_image_url)
-    signals.page_generator_finalized.connect(cover_image_url)
+    signals.article_generator_finalized.connect(cover_image)
+    signals.page_generator_finalized.connect(cover_image)
