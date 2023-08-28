@@ -67,13 +67,13 @@ This is the content of my super blog post.
 By default `cover_image_url` will be empty if `cover_image` is not defined (either as URL or local file) in the article or page metadata. If you want to set a default image for all pages and articles, add one to your **settings file**:
 
 ```python
-DEFAULT_COVER_IMAGE = "https://images.unsplash.com/photo-1489513963600-afa31b458fec"
+COVER_IMAGE_DEFAULT = "https://images.unsplash.com/photo-1489513963600-afa31b458fec"
 ```
 
-`DEFAULT_COVER_IMAGE` can also be a local image file, using the same settings as described above.
+`COVER_IMAGE_DEFAULT` can also be a local image file, using the same settings as described above.
 
 ```python
-DEFAULT_COVER_IMAGE = "default_image.jpg" # Will look for image at COVER_IMAGES_PATH
+COVER_IMAGE_DEFAULT = "default_image.jpg" # Will look for image at COVER_IMAGES_PATH
 ```
 
 ### Give credit
