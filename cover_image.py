@@ -1,5 +1,6 @@
 from pelican import signals
 
+
 def cover_image(generator):
     """
     Adds cover_image_url and cover_image_caption attributes to each article/page, based on 
@@ -29,12 +30,16 @@ def cover_image(generator):
             if cover_image.startswith("http"):
                 cover_image_url = cover_image
             elif "COVER_IMAGES_PATH" in generator.settings:
-                cover_image_url = generator.settings["SITEURL"] + "/" + generator.settings["COVER_IMAGES_PATH"] + "/" + cover_image
+                cover_image_url = "/" + generator.settings["COVER_IMAGES_PATH"] + "/" + cover_image
+
+                # If we used a relative url with the pelican parameter
+                if not generator.settings["RELATIVE_URLS"]:
+                    cover_image_url = generator.settings["SITEURL"] + cover_image_url
+
             else:
                 cover_image_url = "1"
         else:
             cover_image_url = "2"
-
 
         # Set cover_image_caption using COVER_IMAGE_CAPTION format and article/page metadata
         if "COVER_IMAGE_CAPTION" in generator.settings:
@@ -61,6 +66,7 @@ def cover_image(generator):
         # Add cover_image_url and cover_image_caption as attributes to article or page:
         article_or_page.cover_image_url = cover_image_url
         article_or_page.cover_image_caption = cover_image_caption
+
 
 def register():
     signals.article_generator_finalized.connect(cover_image)
