@@ -25,17 +25,16 @@ def cover_image(generator):
             cover_image = ""
 
         # Then we set the cover_image_url, either directly from the cover_image (if it starts with http)
-        # or by combining the SITEURL + COVER_IMAGES_PATH + cover_image (file name).
+        # or by combining SITEURL (optional) + COVER_IMAGES_PATH + cover_image (file name).
         if cover_image:
             if cover_image.startswith("http"):
                 cover_image_url = cover_image
             elif "COVER_IMAGES_PATH" in generator.settings:
                 cover_image_url = "/" + generator.settings["COVER_IMAGES_PATH"] + "/" + cover_image
 
-                # If we used a relative url with the pelican parameter
+                # Prepend with SITEURL if RELATIVE_URLS is disabled
                 if not generator.settings["RELATIVE_URLS"]:
                     cover_image_url = generator.settings["SITEURL"] + cover_image_url
-
             else:
                 cover_image_url = "1"
         else:
